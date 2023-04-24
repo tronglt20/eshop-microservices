@@ -8,26 +8,26 @@ namespace Shared.Infrastructure
 {
     public class UnitOfWorkBase<T> : IUnitOfWorkBase<T> where T : DbContext
     {
-        private readonly IUserInfo _userInfo;
-        private readonly IServiceProvider _serviceProvider;
-        private readonly T _context;
+        private readonly IUserInfo UserInfo;
+        private readonly T Context;
+        private readonly IServiceProvider ServiceProvider;
 
-        public UnitOfWorkBase(IServiceProvider serviceProvider
-            , T context)
+        public UnitOfWorkBase(T context, IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider;
-            _context = context;
-            _userInfo = serviceProvider.GetService<IUserInfo>();
+            ServiceProvider = serviceProvider;
+            Context = context;
+
+            UserInfo = serviceProvider.GetService<IUserInfo>();
         }
 
         public async Task<TResult> ExecuteTransactionAsync<TResult>(Func<Task<TResult>> func)
         {
-            if (_context.Database.CurrentTransaction == null)
+            if (Context.Database.CurrentTransaction == null)
             {
-                var strategy = _context.Database.CreateExecutionStrategy();
+                var strategy = Context.Database.CreateExecutionStrategy();
                 var transResult = await strategy.ExecuteAsync(async () =>
                 {
-                    using (var trans = await _context.Database.BeginTransactionAsync())
+                    using (var trans = await Context.Database.BeginTransactionAsync())
                     {
                         try
                         {
@@ -51,7 +51,7 @@ namespace Shared.Infrastructure
 
         public async Task<int> SaveChangesAsync()
         {
-            var entries = _context.ChangeTracker.Entries();
+            var entries = Context.ChangeTracker.Entries();
             foreach (var entry in entries)
             {
                 switch (entry.State)
@@ -70,7 +70,7 @@ namespace Shared.Infrastructure
                 }
             }
 
-            int saved = await _context.SaveChangesAsync();
+            int saved = await Context.SaveChangesAsync();
             return saved;
         }
 
@@ -88,7 +88,7 @@ namespace Shared.Infrastructure
         #region Generic Repository
         public virtual IBaseRepository<T> Repository<T>() where T : class
         {
-            return _serviceProvider.GetService<IBaseRepository<T>>();
+            return ServiceProvider.GetService<IBaseRepository<T>>();
         }
         #endregion
     }
