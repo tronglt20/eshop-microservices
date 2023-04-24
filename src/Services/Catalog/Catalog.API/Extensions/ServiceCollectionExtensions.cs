@@ -1,5 +1,11 @@
 ﻿using Catalog.API.Data;
+using Catalog.API.Interfaces;
+using Catalog.API.Repositories;
+using Catalog.API.Services;
 using MongoDB.Driver;
+using Shared.API.Extensions;
+using Shared.Domain.Interfaces;
+using Shared.Infrastructure;
 
 namespace Catalog.API.Extensions
 {
@@ -21,6 +27,18 @@ namespace Catalog.API.Extensions
                     Database = database
                 };
             });
+
+            return services;
+        }
+
+        public static IServiceCollection AddCatalogRepositories(this IServiceCollection services)
+        {
+            return
+                services.AddScoped<IProductRepository, ProductRepository>();
+        }
+        public static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<CatalogService>();
 
             return services;
         }

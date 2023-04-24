@@ -14,6 +14,12 @@ services.AddSwaggerGen();
 // Add Database
 services.AddCatalogMongoDatabaseContext(builder.Configuration);
 
+// Add Mongo Repositories
+services.AddCatalogRepositories();
+
+// Add Services
+services.AddServices();
+
 // Add User Info
 services.AddUserInfo();
 

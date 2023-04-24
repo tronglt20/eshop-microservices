@@ -13,11 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\..\Shared.API\Shared.API.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared.API\Shared.API.csproj" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

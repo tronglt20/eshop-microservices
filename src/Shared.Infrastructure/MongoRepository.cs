@@ -26,6 +26,11 @@ namespace Shared.Infrastructure
             return Collection.AsQueryable().Where(expression);
         }
 
+        public async Task<List<T>> GetAllAsync()
+        {
+            return await Collection.AsQueryable().ToListAsync();
+        }
+
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
             var entities = await Collection.FindAsync(expression);
