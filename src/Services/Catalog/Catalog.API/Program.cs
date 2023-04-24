@@ -1,4 +1,5 @@
 using Catalog.API.Extensions;
+using Shared.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ services.AddSwaggerGen();
 
 // Add Database
 services.AddCatalogMongoDatabaseContext(builder.Configuration);
+
+// Add User Info
+services.AddUserInfo();
 
 var app = builder.Build();
 
