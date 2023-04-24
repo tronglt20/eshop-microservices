@@ -9,7 +9,7 @@ namespace Shared.Infrastructure
 {
     public class MongoRepository<T> : IMongoRepository<T> where T : class
     {
-        private readonly UserInfo UserInfo;
+        private readonly IUserInfo UserInfo;
         private readonly IMongoDatabase Database;
         private readonly IServiceProvider ServiceProvider;
         protected IMongoCollection<T> Collection => Database.GetCollection<T>(typeof(T).Name);
@@ -18,7 +18,7 @@ namespace Shared.Infrastructure
         {
             Database = database;
             ServiceProvider = serviceProvider;
-            UserInfo = serviceProvider.GetService<UserInfo>();
+            UserInfo = serviceProvider.GetService<IUserInfo>();
         }
 
         public IMongoQueryable<T> GetQuery(Expression<Func<T, bool>> expression)
