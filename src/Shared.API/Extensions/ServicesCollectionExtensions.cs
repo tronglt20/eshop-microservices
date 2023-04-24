@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Domain.Interfaces;
-using Shared.Infrastructure;
 using System.Reflection;
 
 namespace Shared.API.Extensions
