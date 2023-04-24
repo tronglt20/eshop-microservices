@@ -8,7 +8,7 @@ namespace Shared.Infrastructure
 {
     public class UnitOfWorkBase<T> : IUnitOfWorkBase<T> where T : DbContext
     {
-        private readonly IUserInfo UserInfo;
+        private readonly UserInfo UserInfo;
         private readonly T Context;
         private readonly IServiceProvider ServiceProvider;
 
@@ -17,7 +17,7 @@ namespace Shared.Infrastructure
             ServiceProvider = serviceProvider;
             Context = context;
 
-            UserInfo = serviceProvider.GetService<IUserInfo>();
+            UserInfo = serviceProvider.GetService<UserInfo>();
         }
 
         public async Task<TResult> ExecuteTransactionAsync<TResult>(Func<Task<TResult>> func)
