@@ -1,4 +1,5 @@
 using Basket.API.Extensions;
+using Shared.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,17 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+// Add UserInfo
+services.AddUserInfo();
+
 // Add Distributed cache
 services.AddBasketCache(builder.Configuration);
+
+// Add Repositories
+services.AddBasketRepositories();
+
+// Add Services
+services.AddServices();
 
 var app = builder.Build();
 

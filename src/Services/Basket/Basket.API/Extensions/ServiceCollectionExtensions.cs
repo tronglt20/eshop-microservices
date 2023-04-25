@@ -1,4 +1,7 @@
-﻿using Basket.Infrastructure.DTOs;
+﻿using Basket.API.Services;
+using Basket.Domain.Interfaces;
+using Basket.Infrastructure.DTOs;
+using Basket.Infrastructure.Repositories;
 
 namespace Basket.API.Extensions
 {
@@ -12,6 +15,20 @@ namespace Basket.API.Extensions
             {
                 options.Configuration = RedisSettings.ConnectionString;
             });
+
+            return services;
+        }
+
+        public static IServiceCollection AddBasketRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IBasketRepository, BasketRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<BasketService>();
 
             return services;
         }
