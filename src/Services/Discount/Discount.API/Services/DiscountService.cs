@@ -1,6 +1,7 @@
 ﻿using Discount.Domain.Entities;
 using Discount.Domain.Interfaces;
 using Discount.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Shared.Domain.Interfaces;
 
 namespace Discount.API.Services
