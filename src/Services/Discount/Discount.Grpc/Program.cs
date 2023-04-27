@@ -1,3 +1,4 @@
+using Discount.Grpc.Extensions;
 using Discount.Grpc.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,8 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Additional configuration is required to successfully run gRPC on macOS.
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
+var servies = builder.Services;
 // Add services to the container.
-builder.Services.AddGrpc();
+servies.AddGrpc();
+
+servies.AddDiscountDatabaseContext(builder.Configuration);
+
+servies.AddRepositories();
 
 var app = builder.Build();
 
