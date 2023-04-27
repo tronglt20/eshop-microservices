@@ -1,7 +1,9 @@
 ﻿using Basket.API.Services;
+using Basket.API.Services.Grpc;
 using Basket.Domain.Interfaces;
 using Basket.Infrastructure.DTOs;
 using Basket.Infrastructure.Repositories;
+using Discount.Grpc.Protos;
 
 namespace Basket.API.Extensions
 {
@@ -9,8 +11,6 @@ namespace Basket.API.Extensions
     {
         public static IServiceCollection AddBasketCache(this IServiceCollection services, IConfiguration configuration)
         {
-            configuration.GetSection("RedisSettings").Get<RedisSettings>(options => options.BindNonPublicProperties = true);
-
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = RedisSettings.ConnectionString;
@@ -21,14 +21,32 @@ namespace Basket.API.Extensions
 
         public static IServiceCollection AddBasketRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IBasketRepository, BasketRepository>();
-
-            return services;
+            return services
+                    .AddScoped<IBasketRepository, BasketRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<BasketService>();
+            return services
+                    .AddScoped<BasketService>()
+                    .AddScoped<DiscountGrpcService>();
+        }
+
+
+        public static IServiceCollection AddGrpcClients(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(_ =>
+            {
+                _.Address = new Uri(GrpcSettings.DiscountUrl);
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddConfigSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            configuration.GetSection("RedisSettings").Get<RedisSettings>(options => options.BindNonPublicProperties = true);
+            configuration.GetSection("GrpcSettings").Get<GrpcSettings>(options => options.BindNonPublicProperties = true);
 
             return services;
         }

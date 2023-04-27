@@ -23,7 +23,7 @@ namespace Basket.API.Controllers
         [HttpPost]
         public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
         {
-            return Ok(await _service.UpdateBasketAsync(basket));
+            return await _service.UpdateBasketAsync(basket);
         }
 
         [HttpDelete]
