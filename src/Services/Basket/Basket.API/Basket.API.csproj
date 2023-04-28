@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared.API\Shared.API.csproj" />
-    <ProjectReference Include="..\..\..\Shared.Domain\Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared.API\Shared.API.csproj" />
     <ProjectReference Include="..\Basket.Domain\Basket.Domain.csproj" />
     <ProjectReference Include="..\Basket.Infrastructure\Basket.Infrastructure.csproj" />
   </ItemGroup>
