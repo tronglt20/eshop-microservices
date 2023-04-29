@@ -27,6 +27,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  orderingdb: 
+    container_name: orderingdb
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=Abc@@123
+        - MSSQL_PID=Developerne
+
+    restart: always
+    ports:
+        - "1433:1433"
+
   pgadmin:
     container_name: pgadmin
     environment: 
