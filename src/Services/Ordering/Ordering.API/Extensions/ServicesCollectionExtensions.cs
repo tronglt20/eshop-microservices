@@ -5,9 +5,9 @@ namespace Ordering.API.Extensions
 {
     public static class ServicesCollectionExtensions
     {
-        public static IServiceCollection AddOrderingDatabaseContext(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddOrderDatabaseContext(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<OrderingContext>(options =>
+            services.AddDbContext<OrderContext>(options =>
             {
                 options.UseSqlServer(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             });

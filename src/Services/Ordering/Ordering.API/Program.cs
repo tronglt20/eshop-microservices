@@ -13,7 +13,7 @@ services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
 
-services.AddOrderingDatabaseContext(config);
+services.AddOrderDatabaseContext(config);
 
 
 var app = builder.Build();
