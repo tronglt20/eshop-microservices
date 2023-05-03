@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Ordering.API.Extensions;
+using Ordering.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +17,16 @@ services.AddSwaggerGen();
 
 services.AddOrderDatabaseContext(config);
 
+services.AddRepositories()
+        .AddServices();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var servicesMigration = scope.ServiceProvider;
+    var context = servicesMigration.GetRequiredService<OrderContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -5,9 +5,9 @@ using Shared.Infrastructure;
 
 namespace Ordering.Infrastructure.Repositories
 {
-    internal class OrderRepository : BaseRepository<Order>, IOrderRepository
+    public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
-        public OrderRepository(DbContext dbContext) : base(dbContext)
+        public OrderRepository(OrderContext dbContext) : base(dbContext)
         {
         }
     }

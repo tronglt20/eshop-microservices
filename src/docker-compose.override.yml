@@ -88,3 +88,14 @@ services:
     ports:
       - "8003:80"
 
+
+  ordering.api:
+    container_name: discount.grpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=Server=orderdb;Database=orderdb;User Id=sa;Password=Abc@@123;"
+    depends_on:
+      - orderdb
+    ports:
+      - "8004:80"
+
