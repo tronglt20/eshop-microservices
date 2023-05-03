@@ -90,7 +90,7 @@ services:
 
 
   ordering.api:
-    container_name: discount.grpc
+    container_name: ordering.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=Server=orderdb;Database=orderdb;User Id=sa;Password=Abc@@123;"
