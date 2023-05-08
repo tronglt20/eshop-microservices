@@ -34,7 +34,7 @@ services:
         SA_PASSWORD: "Abc@@123"
     restart: always
     ports:
-        - "1433:1433"
+        - "1435:1433"
 
   rabbitmq:
     container_name: rabbitmq
@@ -54,6 +54,16 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
       
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
   catalog.api:
     container_name: catalog.api
     environment:
@@ -70,6 +80,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "RedisSettings:ConnectionString=basketdb:6379"
       - "GrpcSettings:DiscountUrl=http://discount.grpc"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - basketdb
     ports:
@@ -101,6 +112,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=Server=orderdb;Database=orderdb;User Id=sa;Password=Abc@@123;"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
     ports:

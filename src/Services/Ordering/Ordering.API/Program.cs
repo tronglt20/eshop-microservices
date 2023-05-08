@@ -25,7 +25,7 @@ services.AddMassTransit(_ =>
     _.AddConsumer<BasketCheckoutConsumer>();
     _.UsingRabbitMq((ctx, cfg) =>
     {
-        cfg.Host("amqp://guest:guest@localhost:5672");
+        cfg.Host(config["EventBusSettings:HostAddress"]);
         cfg.ReceiveEndpoint("basketcheckout-queue", c =>
         {
             c.ConfigureConsumer<BasketCheckoutConsumer>(ctx);

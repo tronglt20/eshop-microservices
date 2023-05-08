@@ -31,7 +31,7 @@ services.AddMassTransit(_ =>
 {
     _.UsingRabbitMq((ctx, cfg) =>
     {
-        cfg.Host("amqp://guest:guest@localhost:5672");
+        cfg.Host(config["EventBusSettings:HostAddress"]);
     });
 });
 
