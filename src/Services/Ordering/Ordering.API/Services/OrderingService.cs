@@ -2,19 +2,23 @@
 using Microsoft.EntityFrameworkCore;
 using Ordering.API.ViewModels;
 using Ordering.Domain.Interfaces;
+using Ordering.Infrastructure;
+using Shared.Domain.Interfaces;
 
 namespace Ordering.API.Services
 {
     public class OrderingService
     {
         private readonly IOrderRepository _orderRepo;
+        private readonly IUnitOfWorkBase<OrderContext> _unitOfWork;
 
-        public OrderingService(IOrderRepository orderRepo)
+        public OrderingService(IOrderRepository orderRepo, IUnitOfWorkBase<OrderContext> unitOfWork)
         {
             _orderRepo = orderRepo;
+            _unitOfWork = unitOfWork;
         }
 
-        public async Task<ActionResult<OrderResponse>> GetOrderAsync(string userName)
+        public async Task<ActionResult<OrderResponse?>> GetOrderAsync(string userName)
         {
             return await _orderRepo.GetQuery(_ => _.UserName == userName)
                 .Select(_ => new OrderResponse

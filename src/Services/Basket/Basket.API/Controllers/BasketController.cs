@@ -31,5 +31,11 @@ namespace Basket.API.Controllers
         {
             await _service.DeleteBasketAsync(userName);
         }
+
+        [HttpPost("checkout")]
+        public async Task Checkout([FromBody] BasketCheckout basketCheckout)
+        {
+            await _service.CheckoutAsync(basketCheckout);
+        }
     }
 }

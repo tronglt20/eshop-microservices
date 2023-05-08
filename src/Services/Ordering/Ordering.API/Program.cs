@@ -1,6 +1,6 @@
-using Microsoft.EntityFrameworkCore;
+using MassTransit;
+using Ordering.API.EventBusConsumer;
 using Ordering.API.Extensions;
-using Ordering.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,13 +20,27 @@ services.AddOrderDatabaseContext(config);
 services.AddRepositories()
         .AddServices();
 
+services.AddMassTransit(_ =>
+{
+    _.AddConsumer<BasketCheckoutConsumer>();
+    _.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host("amqp://guest:guest@localhost:5672");
+        cfg.ReceiveEndpoint("basketcheckout-queue", c =>
+        {
+            c.ConfigureConsumer<BasketCheckoutConsumer>(ctx);
+        });
+    });
+});
+services.AddScoped<BasketCheckoutConsumer>();
+
 var app = builder.Build();
-using (var scope = app.Services.CreateScope())
+/*using (var scope = app.Services.CreateScope())
 {
     var servicesMigration = scope.ServiceProvider;
     var context = servicesMigration.GetRequiredService<OrderContext>();
     context.Database.Migrate();
-}
+}*/
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

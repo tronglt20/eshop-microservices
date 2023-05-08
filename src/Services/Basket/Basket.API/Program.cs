@@ -1,4 +1,5 @@
 using Basket.API.Extensions;
+using MassTransit;
 using Shared.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,7 @@ services.AddConfigSettings(config);
 services.AddUserInfo();
 
 // Add Distributed cache
-services.AddBasketCache(config);
+services.AddRedisCache();
 
 // Add Repositories
 services.AddBasketRepositories();
@@ -25,6 +26,14 @@ services.AddBasketRepositories();
 // Add Services
 services.AddGrpcClients(config)
         .AddServices();
+
+services.AddMassTransit(_ =>
+{
+    _.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host("amqp://guest:guest@localhost:5672");
+    });
+});
 
 var app = builder.Build();
 

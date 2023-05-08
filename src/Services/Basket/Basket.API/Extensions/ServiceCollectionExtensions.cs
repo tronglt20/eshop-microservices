@@ -9,7 +9,7 @@ namespace Basket.API.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddBasketCache(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRedisCache(this IServiceCollection services)
         {
             services.AddStackExchangeRedisCache(options =>
             {

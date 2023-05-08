@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ordering.API.Services;
 using Ordering.API.ViewModels;
-using Ordering.Domain.Entities;
 
 namespace Ordering.API.Controllers
 {
@@ -21,6 +20,5 @@ namespace Ordering.API.Controllers
         {
             return await _orderingService.GetOrderAsync(userName);
         }
-
     }
 }

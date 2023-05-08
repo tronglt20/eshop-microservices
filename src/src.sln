@@ -29,19 +29,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Grpc", "Services\Discount\Discount.Grpc\Discount.Grpc.csproj", "{E43CB127-8B22-42DB-B89D-3E2FA35BD534}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.API", "Services\Shared.API\Shared.API.csproj", "{CCD675E5-F247-4369-B0BF-1F07D68A2F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.API", "Services\Shared.API\Shared.API.csproj", "{CCD675E5-F247-4369-B0BF-1F07D68A2F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Domain", "Services\Shared.Domain\Shared.Domain.csproj", "{E73BC97B-9C14-4996-8055-B3CA23DB26B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Domain", "Services\Shared.Domain\Shared.Domain.csproj", "{E73BC97B-9C14-4996-8055-B3CA23DB26B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Infrastructure", "Services\Shared.Infrastructure\Shared.Infrastructure.csproj", "{B1C7DB65-B9E2-467D-BBF3-57BF7F69E8C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "Services\Shared.Infrastructure\Shared.Infrastructure.csproj", "{B1C7DB65-B9E2-467D-BBF3-57BF7F69E8C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{49B6BB59-9BA0-4ED1-9EE9-916DAEC40D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{3F2ED397-4C4E-4E24-B8BA-1F84D3CCB17D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{3F2ED397-4C4E-4E24-B8BA-1F84D3CCB17D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{BDC4B0E2-1072-4126-9087-B12D85D554D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{BDC4B0E2-1072-4126-9087-B12D85D554D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{46291E50-FAF8-485A-8C42-72968741B50E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{46291E50-FAF8-485A-8C42-72968741B50E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{C2E913E2-31A4-4D47-A73D-37792B01C99E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{BA0156F6-7422-4972-B7D2-C645A0E8F8DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +113,10 @@ Global
 		{46291E50-FAF8-485A-8C42-72968741B50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46291E50-FAF8-485A-8C42-72968741B50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46291E50-FAF8-485A-8C42-72968741B50E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0156F6-7422-4972-B7D2-C645A0E8F8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0156F6-7422-4972-B7D2-C645A0E8F8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0156F6-7422-4972-B7D2-C645A0E8F8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0156F6-7422-4972-B7D2-C645A0E8F8DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +140,7 @@ Global
 		{3F2ED397-4C4E-4E24-B8BA-1F84D3CCB17D} = {49B6BB59-9BA0-4ED1-9EE9-916DAEC40D62}
 		{BDC4B0E2-1072-4126-9087-B12D85D554D8} = {49B6BB59-9BA0-4ED1-9EE9-916DAEC40D62}
 		{46291E50-FAF8-485A-8C42-72968741B50E} = {49B6BB59-9BA0-4ED1-9EE9-916DAEC40D62}
+		{BA0156F6-7422-4972-B7D2-C645A0E8F8DA} = {C2E913E2-31A4-4D47-A73D-37792B01C99E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCAD1E2A-C10B-4B45-92D9-0596FB72D952}
