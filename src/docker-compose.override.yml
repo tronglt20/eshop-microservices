@@ -118,3 +118,16 @@ services:
     ports:
       - "8004:80"
 
+
+  eshop.apigateway:
+    container_name: apigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "8011:80"
+

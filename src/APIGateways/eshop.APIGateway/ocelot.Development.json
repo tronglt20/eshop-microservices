@@ -1,3 +1,121 @@
 {
+  "Routes": [
+    // Catalog APIs
+    {
+      "DownstreamPathTemplate": "/api/catalog",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/catalog",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/catalog/{catchAll}",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
 
+
+    // Basket APIs
+    {
+      "DownstreamPathTemplate": "/api/basket",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "basket.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/basket",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
+    {
+      "DownstreamPathTemplate": "/api/basket/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "basket.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/basket/{catchAll}",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
+
+
+    // Discount APIs
+    {
+      "DownstreamPathTemplate": "/api/discount",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "discount.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/discount",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
+    {
+      "DownstreamPathTemplate": "/api/discount/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "discount.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/discount/{catchAll}",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
+
+
+    // Ordering APIs
+    {
+      "DownstreamPathTemplate": "/api/ordering",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ordering.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/ordering",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    },
+    {
+      "DownstreamPathTemplate": "/api/ordering/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ordering.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/ordering/{catchAll}",
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5010"
+  }
 }

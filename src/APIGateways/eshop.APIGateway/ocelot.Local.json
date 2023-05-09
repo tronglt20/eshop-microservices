@@ -11,7 +11,8 @@
         }
       ],
       "UpstreamPathTemplate": "/api/catalog",
-      "UpstreamHttpMethod": []
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
     },
     {
       "DownstreamPathTemplate": "/api/catalog/{catchAll}",
@@ -23,7 +24,8 @@
         }
       ],
       "UpstreamPathTemplate": "/api/catalog/{catchAll}",
-      "UpstreamHttpMethod": []
+      "UpstreamHttpMethod": [],
+      "RouteIsCaseSensitive": true
     },
 
 
