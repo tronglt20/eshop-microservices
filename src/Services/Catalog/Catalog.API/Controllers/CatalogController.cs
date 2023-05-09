@@ -14,10 +14,16 @@ namespace Catalog.API.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        public async Task<List<Product>> GetProducts()
+        [HttpGet()]
+        public async Task<List<Product>> GetListProducts()
         {
-            return await _service.GetProductsAsync();
+            return await _service.GetListProductsAsync();
+        }
+
+        [HttpGet("id")]
+        public async Task<Product> GetProduct([FromRoute] string id)
+        {
+            return await _service.GetProductAsync(id);
         }
 
         [HttpPost]

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ordering.API.Services;
-using Ordering.API.ViewModels;
+using Ordering.Domain.Entities;
 
 namespace Ordering.API.Controllers
 {
@@ -16,7 +16,7 @@ namespace Ordering.API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<OrderResponse>> GetOrder(string userName)
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrder(string userName)
         {
             return await _orderingService.GetOrderAsync(userName);
         }
