@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
-    [Route("catalog")]
+    [Route("api/catalog")]
     public class CatalogController : ControllerBase
     {
         private readonly CatalogService _service;

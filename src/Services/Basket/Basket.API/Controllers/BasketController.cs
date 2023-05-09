@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.API.Controllers
 {
-    [Route("basket")]
+    [Route("api/basket")]
     public class BasketController : ControllerBase
     {
         private readonly BasketService _service;

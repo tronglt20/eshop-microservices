@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Discount.API.Controllers
 {
-    [Route("discount")]
+    [Route("api/discount")]
     public class DiscountController : ControllerBase
     {
         private readonly DiscountService _discountService;

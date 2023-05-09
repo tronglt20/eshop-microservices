@@ -4,7 +4,7 @@ using Ordering.API.ViewModels;
 
 namespace Ordering.API.Controllers
 {
-    [Route("ordering")]
+    [Route("api/ordering")]
     public class OrderingController : ControllerBase
     {
         private readonly OrderingService _orderingService;
