@@ -18,7 +18,16 @@ namespace Basket.API.Services.Grpc
                 ProductId = productId
             };
 
-            return await _grpcClient.GetDiscountAsync(discountRequest);
+            try
+            {
+                return await _grpcClient.GetDiscountAsync(discountRequest);
+
+            }
+            catch (Exception e)
+            {
+
+                return null;
+            }
         }
     }
 }

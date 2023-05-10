@@ -1,6 +1,6 @@
 ﻿using Catalog.API.Entities;
 using Catalog.API.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver.Linq;
 
 namespace Catalog.API.Services
 {
@@ -15,7 +15,7 @@ namespace Catalog.API.Services
 
         public async Task<Product> GetProductAsync(string id)
         {
-            return await _productRepo.GetQuery(_ => _.Id == id).FirstOrDefaultAsync();
+            return await _productRepo.GetQuery(_ => _.Id == id).SingleOrDefaultAsync();
         }
 
         public async Task<List<Product>> GetListProductsAsync()

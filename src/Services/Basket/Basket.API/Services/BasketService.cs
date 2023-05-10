@@ -31,7 +31,8 @@ namespace Basket.API.Services
             foreach (var item in basket.Items)
             {
                 var coupon = await _discountGrpcService.GetDiscountAsync(item.ProductId);
-                item.Price -= coupon.Amout;
+                if(coupon != null)
+                    item.Price -= coupon.Amout;
             }
 
             return await _basketRepo.UpdateBasketAsync(basket);

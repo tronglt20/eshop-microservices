@@ -20,7 +20,7 @@ namespace Catalog.API.Controllers
             return await _service.GetListProductsAsync();
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<Product> GetProduct([FromRoute] string id)
         {
             return await _service.GetProductAsync(id);
