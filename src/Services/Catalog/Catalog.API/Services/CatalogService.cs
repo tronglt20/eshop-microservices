@@ -27,5 +27,10 @@ namespace Catalog.API.Services
         {
             await _productRepo.InsertAsync(product);
         }
+
+        public async Task<Product> GetProductByCategoryAsync(string category)
+        {
+            return await _productRepo.GetQuery(_ => _.Category == category).SingleOrDefaultAsync();
+        }
     }
 }

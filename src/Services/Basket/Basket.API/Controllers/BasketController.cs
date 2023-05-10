@@ -15,7 +15,7 @@ namespace Basket.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ShoppingCart>> GetBasket(string userName)
+        public async Task<ActionResult<ShoppingCart>> GetBasket([FromQuery] string userName)
         {
             return await _service.GetBasketAsync(userName);
         }

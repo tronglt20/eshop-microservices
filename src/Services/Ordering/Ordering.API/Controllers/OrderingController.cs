@@ -16,7 +16,7 @@ namespace Ordering.API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrder(string userName)
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrder([FromQuery] string userName)
         {
             return await _orderingService.GetOrderAsync(userName);
         }
