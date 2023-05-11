@@ -145,3 +145,18 @@ services:
       - ordering.api
     ports:
       - "8012:80"
+
+  eshop.client:
+    container_name: eshop.client
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "APIEndpoints:GatewayUrl=http://apigateway"
+    depends_on:
+      - apigateway
+      - catalog.api
+      - discount.api
+      - basket.api
+      - ordering.api
+    ports:
+      - "8013:80"
+
