@@ -14,7 +14,7 @@ namespace Catalog.API.Controllers
             _service = service;
         }
 
-        [HttpGet()]
+        [HttpGet("")]
         public async Task<List<Product>> GetListProducts()
         {
             return await _service.GetListProductsAsync();
@@ -26,7 +26,7 @@ namespace Catalog.API.Controllers
             return await _service.GetProductAsync(id);
         }
 
-        [HttpGet()]
+        [HttpGet("{category}")]
         public async Task<Product> GetProductByCategory([FromQuery] string category)
         {
             return await _service.GetProductByCategoryAsync(category);

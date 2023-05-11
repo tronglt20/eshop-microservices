@@ -1,4 +1,5 @@
 ﻿using Catalog.API.Data;
+using Catalog.API.Entities;
 using Catalog.API.Interfaces;
 using Catalog.API.Repositories;
 using Catalog.API.Services;
@@ -18,11 +19,16 @@ namespace Catalog.API.Extensions
                 var client = new MongoClient(clientSettings);
 
                 var database = client.GetDatabase(dbconnection.DatabaseName);
+
+                // Seeding data here
+                CatalogDbSeeder.SeedData(database.GetCollection<Product>("Product"));
+
                 return new CatalogMongoDatabaseOptions
                 {
                     Database = database
                 };
             });
+
 
             return services;
         }

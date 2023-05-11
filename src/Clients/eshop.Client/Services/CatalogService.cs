@@ -42,9 +42,8 @@ namespace eshop.Client.Services
 
         public async Task<IEnumerable<Catalog>?> GetListCatalogsByCategory(string category)
         {
-            var response = await _client.SendRequestAsync($"/api/catalog"
+            var response = await _client.SendRequestAsync($"/api/catalog/{category}"
                     , Method.Get
-                    , parameters: new Dictionary<string, string> (){ { "category", category } }
                 );
 
             if (response?.StatusCode == System.Net.HttpStatusCode.OK)
