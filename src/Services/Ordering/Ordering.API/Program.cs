@@ -35,12 +35,6 @@ services.AddMassTransit(_ =>
 services.AddScoped<BasketCheckoutConsumer>();
 
 var app = builder.Build();
-/*using (var scope = app.Services.CreateScope())
-{
-    var servicesMigration = scope.ServiceProvider;
-    var context = servicesMigration.GetRequiredService<OrderContext>();
-    context.Database.Migrate();
-}*/
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

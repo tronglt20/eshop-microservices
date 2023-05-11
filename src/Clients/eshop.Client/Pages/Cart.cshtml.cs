@@ -19,7 +19,7 @@ namespace eshop.Client
         public async Task<IActionResult> OnGetAsync()
         {
             var userName = "tronglt";
-            Cart = await _basketService.GetBasketAsync("swn");
+            Cart = await _basketService.GetBasketAsync(userName);
 
             return Page();
         }
@@ -27,7 +27,7 @@ namespace eshop.Client
         public async Task<IActionResult> OnPostRemoveToCartAsync(string productId)
         {
             var userName = "tronglt";
-            var basket = await _basketService.GetBasketAsync("swn");
+            var basket = await _basketService.GetBasketAsync(userName);
 
             if (basket != null)
             {

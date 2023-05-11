@@ -1,5 +1,6 @@
 ﻿using Catalog.API.Entities;
 using Catalog.API.Interfaces;
+using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
 namespace Catalog.API.Services
@@ -18,19 +19,16 @@ namespace Catalog.API.Services
             return await _productRepo.GetQuery(_ => _.Id == id).SingleOrDefaultAsync();
         }
 
-        public async Task<List<Product>> GetListProductsAsync()
+        public async Task<List<Product>> GetListProductsAsync(string category)
         {
-            return await _productRepo.GetAllAsync();
+            return await _productRepo
+                .GetQuery(_ => string.IsNullOrEmpty(category) ? true : _.Category == category)
+                .ToListAsync();
         }
 
         public async Task CreateProductAsync(Product product)
         {
             await _productRepo.InsertAsync(product);
-        }
-
-        public async Task<Product> GetProductByCategoryAsync(string category)
-        {
-            return await _productRepo.GetQuery(_ => _.Category == category).SingleOrDefaultAsync();
         }
     }
 }

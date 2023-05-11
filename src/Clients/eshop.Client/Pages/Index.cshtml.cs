@@ -31,14 +31,23 @@ namespace eshop.Client.Pages
             var userName = "tronglt";
             var basket = await _basketService.GetBasketAsync(userName);
 
-            basket.Items.Add(new BasketItem
+            var existed = basket.Items.Any(_ => _.ProductId == productId);
+            if (existed)
             {
-                ProductId = productId,
-                ProductName = product.Name,
-                Price = product.Price,
-                Quantity = 1,
-                Color = "Black"
-            });
+                var item = basket.Items.Single(_ => _.ProductId == productId);
+                item.Quantity += 1;
+            }
+            else
+            {
+                basket.Items.Add(new BasketItem
+                {
+                    ProductId = productId,
+                    ProductName = product.Name,
+                    Price = product.Price,
+                    Quantity = 1,
+                    Color = "Black"
+                });
+            }
 
             var basketUpdated = await _basketService.UpdateBasketAsync(basket);
             return RedirectToPage("Cart");

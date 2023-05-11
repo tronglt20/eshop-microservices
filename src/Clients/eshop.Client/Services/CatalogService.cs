@@ -30,7 +30,8 @@ namespace eshop.Client.Services
 
         public async Task<Catalog?> GetCatalogAsync(string id)
         {
-            var response = await _client.SendRequestAsync($"/api/catalog/{id}", Method.Get);
+            var response = await _client.SendRequestAsync($"/api/catalog/{id}"
+                , Method.Get);
             if (response?.StatusCode == System.Net.HttpStatusCode.OK)
                 return JsonSerializer.Deserialize<Catalog>(response.Content, new JsonSerializerOptions()
                 {
@@ -42,8 +43,9 @@ namespace eshop.Client.Services
 
         public async Task<IEnumerable<Catalog>?> GetListCatalogsByCategory(string category)
         {
-            var response = await _client.SendRequestAsync($"/api/catalog/{category}"
+            var response = await _client.SendRequestAsync($"/api/catalog"
                     , Method.Get
+                    , parameters: new Dictionary<string, string>() { { "category", category } }
                 );
 
             if (response?.StatusCode == System.Net.HttpStatusCode.OK)

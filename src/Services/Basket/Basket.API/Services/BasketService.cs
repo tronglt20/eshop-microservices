@@ -70,7 +70,7 @@ namespace Basket.API.Services
             };
 
             await _publishEndpoint.Publish(@event);
-            /*await _basketRepo.DeleteBasketAsync(basket.UserName);*/
+            await _basketRepo.DeleteBasketAsync(basket.UserName);
         }
     }
 }

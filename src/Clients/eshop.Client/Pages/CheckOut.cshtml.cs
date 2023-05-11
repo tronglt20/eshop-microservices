@@ -32,10 +32,10 @@ namespace eshop.Client
             var userName = "tronglt";
             Cart = await _basketService.GetBasketAsync(userName);
 
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 return Page();
-            }
+            }*/
 
             Order.UserName = userName;
             Order.TotalPrice = Cart.TotalPrice;

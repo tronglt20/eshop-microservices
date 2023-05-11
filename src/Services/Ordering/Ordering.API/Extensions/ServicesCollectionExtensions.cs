@@ -17,6 +17,15 @@ namespace Ordering.API.Extensions
                 options.UseSqlServer(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             });
 
+            // Database Migrations
+            using (var scope = services.BuildServiceProvider().CreateScope())
+            {
+                var servicesMigration = scope.ServiceProvider;
+                var context = servicesMigration.GetRequiredService<OrderContext>();
+                if (context.Database.GetPendingMigrations().Any())
+                    context.Database.Migrate();
+            }
+
             return services;
         }
 

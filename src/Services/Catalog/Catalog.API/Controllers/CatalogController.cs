@@ -14,22 +14,16 @@ namespace Catalog.API.Controllers
             _service = service;
         }
 
-        [HttpGet("")]
-        public async Task<List<Product>> GetListProducts()
+        [HttpGet()]
+        public async Task<List<Product>> GetListProducts([FromQuery] string category)
         {
-            return await _service.GetListProductsAsync();
+            return await _service.GetListProductsAsync(category);
         }
 
         [HttpGet("{id}")]
         public async Task<Product> GetProduct([FromRoute] string id)
         {
             return await _service.GetProductAsync(id);
-        }
-
-        [HttpGet("{category}")]
-        public async Task<Product> GetProductByCategory([FromQuery] string category)
-        {
-            return await _service.GetProductByCategoryAsync(category);
         }
 
         [HttpPost]
