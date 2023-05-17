@@ -1,4 +1,4 @@
-# AspnetMicroservices (implemented by my own)
+# Eshop Microservices
 
 **Refer the main repository -> https://github.com/aspnetrun/run-aspnetcore-microservices**
 
